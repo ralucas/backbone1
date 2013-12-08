@@ -1,9 +1,9 @@
 //picture model
-var Picture = Backbone.Model.extend({
+var ImageModel = Backbone.Model.extend({
 	initialize : function(){
-		console.log('hello picture');
+		console.log('hello images');
 	},
-	urlRoot : "/pictures",
+	urlRoot : "/images",
 	imageId : _.uniqueId('image'),
 	defaults : {
 		name : "",
@@ -11,20 +11,31 @@ var Picture = Backbone.Model.extend({
 	}
 });
 
-var picture = new Picture();
+var imageModel = new ImageModel();
 
-console.log(picture.imageId);
+console.log(imageModel.imageId);
 
-var ImageView = new Backbone.View.extend({
-
+//views
+var ImageList = Backbone.View.extend({
+	el: '.image-thumbs',
+	render: function (){
+		this.$el.html('Content show here');
+	}
 });
 
+var imageList = new ImageList();
 
-
-
-
+//routes
 var Router = Backbone.Router.extend({
 	routes : {
 		"" : "home"
 	}
 });
+
+var router = new Router();
+
+router.on('route:home', function(){
+	imageList.render();
+});
+
+Backbone.history.start();
