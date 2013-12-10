@@ -2,13 +2,15 @@
 var ImageModel = Backbone.Model.extend({
 	initialize : function(){
 		console.log('hello images');
+		this.on('change', function(){
+			console.log('Changes have been made');
+		});
 	},
 	urlRoot : "/images",
 	imageId : _.uniqueId('image'),
-	defaults : {
-		name : "",
-		time : new Date()
-	}
+	time : new Date(),
+	title : "",
+	uploaded: false
 });
 
 var imageModel = new ImageModel();
@@ -16,14 +18,19 @@ var imageModel = new ImageModel();
 console.log(imageModel.imageId);
 
 //views
-var ImageList = Backbone.View.extend({
+var ImageListView = Backbone.View.extend({
 	el: '.image-thumbs',
 	render: function (){
-		this.$el.html('Content show here');
+		var source = $("#thumbs-template").html();
+		var template = Handlebars.compile(source);
+		var data = template(imageModel);
+		this.$el.html(data);
 	}
 });
 
-var imageList = new ImageList();
+var imageListView = new ImageListView();
+
+
 
 //routes
 var Router = Backbone.Router.extend({
@@ -35,7 +42,7 @@ var Router = Backbone.Router.extend({
 var router = new Router();
 
 router.on('route:home', function(){
-	imageList.render();
+	imageListView.render();
 });
 
 Backbone.history.start();

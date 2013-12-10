@@ -7,3 +7,14 @@ header {
     width: 50%;
     text-align: center;
 }
+
+.new-image-form {
+    border: 1px solid rgba(0,0,0,.1);
+    border-radius: 5px;
+    margin: 1%;
+}
+
+.new-image-form > input {
+    margin-right: auto;
+    margin-left: auto;
+}
