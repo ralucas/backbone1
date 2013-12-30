@@ -14,7 +14,11 @@ header {
     margin: 1%;
 }
 
-.new-image-form > input {
+#drag-box > input {
     margin-right: auto;
     margin-left: auto;
+}
+
+#drag-box {
+	border: 4px black dashed
 }

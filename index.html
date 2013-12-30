@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js">
+<html>
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,40 +18,43 @@
         </header>
 
         <div class="container image-uploader">
-            <form class="new-image-form" method="post" enctype="multipart/form-data">
+            <form class="new-image-form">
                 <legend>Submit a new photo or series of photos</legend>
-                <input type="file" class="btn btn-default"/>
-                <p class="help-block">Image files only (i.e. png, jpg, bmp, gif, etc.)</p>
+                <div id='drag-box'>
+                    <input type="file" class="btn btn-default"/>
+                    <p class="help-block">Image files only (i.e. png, jpg, bmp, gif, etc.)</p>
+                </div>
                 <input class="btn btn-default" type="submit" value="Submit">
             </form>
         </div>
 
         <div class="container image-thumbs"></div>
 
-            <script id="thumbs-template" type="text/x-handlebars-template">
-
+            <script id="thumbs-template" type="text/template">
                 <div class="row">
                     <div class="col-sm-6 col-md-4">
                          <div class="thumbnail">
                             <img data-src="holder.js/300x200">
                             <div class="caption">
-                            <h3>{{title}}</h3>
-                            <p>Date: {{time}}</p>
-                            <p>Id: {{imageId}}</p> 
+                            <h3><%= title %></h3>
+                            <p>Date: <%= time %></p>
+                            <p>Id: <%= imageId %></p> 
                             </div>
                         </div>
                     </div>
                 </div>
-
             </script>
 
         
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.1.2/handlebars.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.0/backbone-min.js"></script>
-        <script src="js/main.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.0/backbone-min.js"></script>
+        <script type="text/javascript" src="js/models/image_model.js"></script>
+        <script type="text/javascript" src="js/views/image_views.js"></script>
+        <script type="text/javascript" src="js/collections/image_collections.js"></script>
+        <script type="text/javascript" src="js/routes/image_router.js"></script>
+        <script src="js/app.js"></script>
 
 
     </body>
