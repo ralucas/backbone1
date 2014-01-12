@@ -21,10 +21,10 @@
             <form class="new-image-form">
                 <legend>Submit a new photo or series of photos</legend>
                 <div id='drag-box'>
-                    <input type="file" class="btn btn-default"/>
+                    <input type="file" class="btn btn-default fileInput"/>
                     <p class="help-block">Image files only (i.e. png, jpg, bmp, gif, etc.)</p>
                 </div>
-                <input class="btn btn-default" type="submit" value="Submit">
+                <input class="btn btn-default submitBtn" type="submit" value="Submit">
             </form>
         </div>
 
@@ -52,6 +52,7 @@
         <script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.0/backbone-min.js"></script>
         <script type="text/javascript" src="js/models/image_model.js"></script>
         <script type="text/javascript" src="js/views/image_views.js"></script>
+        <script type="text/javascript" src="js/views/uploader_views.js"></script>
         <script type="text/javascript" src="js/collections/image_collections.js"></script>
         <script type="text/javascript" src="js/routes/image_router.js"></script>
         <script src="js/app.js"></script>

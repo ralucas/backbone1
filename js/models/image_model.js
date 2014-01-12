@@ -1,11 +1,9 @@
 //picture model
 var ImageModel = Backbone.Model.extend({
-	
 	defaults: {
-		title: "",
-		time: new Date(),
-		uploaded: false,
-		imageId: _.uniqueId('image')
+		imageId: _.uniqueId('image'),
+		title: 'new',
+		uploaded: false
 	},
 	initialize : function(){
 		console.log('hello images');
@@ -14,6 +12,9 @@ var ImageModel = Backbone.Model.extend({
 		});
 	},
 	urlRoot: "/images"
+
 });
 
-var imageModel = new ImageModel({title: 'first one'});
+var imageModel = new ImageModel({
+	time: new Date()
+	});

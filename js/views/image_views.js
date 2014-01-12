@@ -7,10 +7,6 @@ var ImageListView = Backbone.View.extend({
 	template: _.template( $('#thumbs-template').html() ),
 
 	render: function (){
-		console.log(this.model.toJSON());
-		console.log(this.$el);
 		this.$el.html( this.template( this.model.toJSON() ) );
 	}
 });
-
-var imageListView = new ImageListView();

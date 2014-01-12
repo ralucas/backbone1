@@ -7,6 +7,7 @@ var Router = Backbone.Router.extend({
 var router = new Router();
 
 router.on('route:home', function(){
+    var imageListView = new ImageListView();
 	imageListView.render();
 });
 
