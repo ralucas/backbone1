@@ -5,31 +5,39 @@ var ImageUploader = Backbone.View.extend({
     model: imageModel,
 
     events: {
-        'change .fileInput': 'getFile'
+        'change .fileInput': 'getFile',
+        'submit .new-image-form': 'uploadFile'
     },
 
-    getFile: function() {
-        console.log('hi1');
+    getFile: function(e) {
+        var reader = new FileReader(),
+            _this = this,
+            $inputFile = e.target.files[0];
 
-        // var reader = new FileReader(),
-        //     _this = this,
-        //     $inputFile = e.target.files[0];
-
-        // console.log(this.model);
-
-        // reader.onload = (function(file) {
-        //     console.log('hi');
-        //     _this.model = {
-        //         title: file.name,
-        //         fileName: file.name,
-        //         type: file.type,
-        //         size: file.size
-        //     };
+        reader.onload = (function(file) {
+            _this.model = new ImageModel({
+                title: file.name,
+                fileName: file.name,
+                type: file.type,
+                size: file.size
+            });
             
-        //     _this.model.save();
+            _this.model.save();
 
-        // })($inputFile);
+        })($inputFile);
 
-        // reader.readAsDataURL($inputFile);
+        reader.readAsDataURL($inputFile);
+    },
+
+    uploadFile: function(e) {
+        e.preventDefault();
+        if (!this.model.fileName) {
+            alert('Please load a file');
+        } else {
+            console.log(this.model);
+            this.model.save({uploaded: true});
+        }
     }
 });
+
+var imageUploader = new ImageUploader();

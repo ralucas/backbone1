@@ -10,8 +10,7 @@ var ImageModel = Backbone.Model.extend({
 		this.on('change', function(){
 			console.log('Changes have been made');
 		});
-	},
-	urlRoot: "/images"
+	}
 
 });
 
